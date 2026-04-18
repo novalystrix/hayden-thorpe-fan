@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hayden Thorpe — The Voice Unbound</title>
+<meta name="description" content="A fan tribute to Hayden Thorpe — from the hills of Kendal to the stages of the world. Wild Beasts frontman turned visionary solo artist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-card-hover: #1a1a28;
+  --text: #e8e6e3;
+  --text-muted: #9a9590;
+  --accent: #c4a265;
+  --accent-glow: rgba(196,162,101,0.15);
+  --gradient-1: linear-gradient(135deg, #1a1520 0%, #0a0a0f 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(10,10,15,0) 0%, rgba(10,10,15,0.8) 60%, #0a0a0f 100%);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: 
+    var(--gradient-hero),
+    url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1600&q=80') center/cover;
+  padding-bottom: 80px;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #e8e6e3 0%, #c4a265 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero .subtitle {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.hero .tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,162,101,0.1);
+  transition: all 0.3s;
+}
+
+nav .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+nav .links { display: flex; gap: 24px; }
+nav .links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+nav .links a:hover { color: var(--accent); }
+
+/* SECTIONS */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 24px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+/* BIO */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.bio-text p {
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.bio-text .highlight {
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin: 32px 0;
+}
+
+.bio-facts {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 36px;
+  border: 1px solid rgba(196,162,101,0.1);
+}
+
+.bio-facts h3 {
+  color: var(--accent);
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+
+.fact-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.fact-item:last-child { border: none; }
+.fact-label { color: var(--text-muted); font-size: 0.9rem; }
+.fact-value { color: var(--text); font-weight: 500; text-align: right; }
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent) 0%, rgba(196,162,101,0.1) 100%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 48px;
+  padding: 28px 32px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid rgba(196,162,101,0.08);
+  transition: all 0.3s;
+}
+
+.timeline-item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(196,162,101,0.2);
+  transform: translateX(4px);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: 32px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+}
+
+.timeline-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.timeline-text {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* DISCOGRAPHY */
+.disco-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.album-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(196,162,101,0.08);
+  transition: all 0.3s;
+}
+
+.album-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(196,162,101,0.25);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.album-art {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #1a1520, #2a2030);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+}
+
+.album-art .era-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(196,162,101,0.2);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.album-info {
+  padding: 24px;
+}
+
+.album-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.album-info .album-year {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.album-info p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.album-info .album-label {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* QUOTES */
+.quotes-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.quote-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 36px;
+  border: 1px solid rgba(196,162,101,0.08);
+  position: relative;
+}
+
+.quote-card::before {
+  content: '\201C';
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  color: var(--accent);
+  opacity: 0.2;
+  position: absolute;
+  top: 8px;
+  left: 20px;
+  line-height: 1;
+}
+
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-source {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* DEEP CUTS */
+.deep-cuts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.deep-cut-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid rgba(196,162,101,0.08);
+  transition: all 0.3s;
+}
+
+.deep-cut-card:hover {
+  background: var(--bg-card-hover);
+}
+
+.deep-cut-card .icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.deep-cut-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.deep-cut-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 60px 24px;
+  border-top: 1px solid rgba(196,162,101,0.1);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+footer .heart { color: var(--accent); }
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .bio-grid { grid-template-columns: 1fr; }
+  .quotes-container { grid-template-columns: 1fr; }
+  nav .links { gap: 12px; }
+  nav .links a { font-size: 0.75rem; }
+  section { padding: 60px 16px; }
+}
+
+/* FADE IN ANIMATION */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">HT</a>
+  <div class="links">
+    <a href="#biography">Biography</a>
+    <a href="#journey">Journey</a>
+    <a href="#music">Music</a>
+    <a href="#words">Words</a>
+    <a href="#secrets">Deep Cuts</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>Hayden Thorpe</h1>
+    <p class="subtitle">The Voice Unbound</p>
+    <p class="tagline">"Music is a form of reincarnation. The forces of time don't apply to music."</p>
+  </div>
+  <div class="scroll-hint">Scroll to explore ↓</div>
+</div>
+
+<!-- BIOGRAPHY -->
+<section id="biography">
+  <h2 class="section-title fade-in">The Man Behind the Voice</h2>
+  <p class="section-subtitle fade-in">From the windswept hills of Cumbria to the stages of the world — and back into himself.</p>
+  
+  <div class="bio-grid">
+    <div class="bio-text fade-in">
+      <p>Hayden Norman Thorpe was born on 18 January 1986 in <strong>Kendal, Cumbria</strong> — a small market town in England's Lake District, better known for its mint cake than its musicians. But from this unassuming corner of northern England emerged one of indie rock's most distinctive and daring voices.</p>
+      
+      <p>At sixteen, while still a student at Queen Katherine School, Thorpe formed a duo called <strong>Fauve</strong> (French for "wild beast") with classmate Ben Little. That teenage experiment would evolve into <strong>Wild Beasts</strong> — a band that spent sixteen years challenging every assumption about what British indie music could sound like.</p>
+      
+      <div class="highlight">"I'm either hyper-specialised or completely maladjusted — or maybe both at the same time."</div>
+      
+      <p>Thorpe's voice is his signature: a soaring, operatic <strong>countertenor</strong> that critics have called "Marmite" — you either fall in love instantly or need time to let it in. He once admitted: <em>"I never realised my voice was like Marmite."</em> That vulnerability, combined with lyrics that tackled toxic masculinity, latent sexuality, and the strange tenderness of modern life, made Wild Beasts one of the most written-about bands of their generation — even as mainstream success remained just out of reach.</p>
+      
+      <p>Today, Thorpe lives in <strong>Walthamstow, East London</strong>, where he continues to write, record, and explore the space between beauty and strangeness. He has released three solo albums, each more adventurous than the last — from the piano-led soul-searching of <em>Diviner</em> to the nature-inspired soundscapes of <em>Ness</em>, created with thistles, seeds, and grasses collected from a former weapons testing site on the Suffolk coast.</p>
+    </div>
+    
+    <div class="bio-facts fade-in">
+      <h3>Quick Facts</h3>
+      <div class="fact-item">
+        <span class="fact-label">Born</span>
+        <span class="fact-value">18 January 1986</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Hometown</span>
+        <span class="fact-value">Kendal, Cumbria</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Current base</span>
+        <span class="fact-value">Walthamstow, London</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Voice type</span>
+        <span class="fact-value">Countertenor</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Instruments</span>
+        <span class="fact-value">Vocals, piano, guitar, bass, keys</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Label</span>
+        <span class="fact-value">Domino Records</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Years active</span>
+        <span class="fact-value">2002 – present</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Influences</span>
+        <span class="fact-value">Leonard Cohen, Kate Bush, The Smiths</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Literary influence</span>
+        <span class="fact-value">Arthur Rimbaud</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Wild Beasts era</span>
+        <span class="fact-value">2002 – 2018</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Solo albums</span>
+        <span class="fact-value">3 (Diviner, Moondust, Ness)</span>
+      </div>
+      <div class="fact-item">
+        <span class="fact-label">Mercury nomination</span>
+        <span class="fact-value">Two Dancers (2010)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY / TIMELINE -->
+<section id="journey">
+  <h2 class="section-title fade-in">The Journey</h2>
+  <p class="section-subtitle fade-in">Two decades of reinvention — from Kendal schoolboys to one of British music's most compelling stories.</p>
+  
+  <div class="timeline">
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2002</div>
+      <div class="timeline-title">The Beginning: Fauve</div>
+      <p class="timeline-text">Two sixteen-year-olds at Queen Katherine School in Kendal — Hayden Thorpe and Ben Little — form a duo called Fauve. They start writing songs in bedrooms and borrowed rehearsal spaces, unaware they're planting the seed of something that will last sixteen years.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2004</div>
+      <div class="timeline-title">Wild Beasts Are Born</div>
+      <p class="timeline-text">Classmates Chris Talbot (drums) and Gareth Bullock (bass) join. The name changes to Wild Beasts. They record their first demo EP in a space called "Studio 6" in Kendal. The sound is already peculiar and magnetic — Hayden's falsetto cutting through like nothing else in British music.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2005</div>
+      <div class="timeline-title">Leeds Calling</div>
+      <p class="timeline-text">The band relocates to Leeds. Tom Fleming replaces Bullock on bass, completing the classic lineup. Their first Leeds gig is at Trash (formerly The Mixing Tin). The university town becomes their proving ground.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2006</div>
+      <div class="timeline-title">First Record Deal</div>
+      <p class="timeline-text">Wild Beasts sign to Bad Sneakers Records and release "Brave Bulging Buoyant Clairvoyants" — a title that tells you everything about their boldness. The single hits #17 on the UK indie chart. NME and Marc Riley's BBC Radio 6 Music take notice. The Guardian describes Hayden's "enormous falsetto voice, which soars over chiming guitars."</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2007</div>
+      <div class="timeline-title">Domino Records</div>
+      <p class="timeline-text">The big leap: Wild Beasts sign to Domino Records, home to Arctic Monkeys and Franz Ferdinand. NME names them one of ten bands "tipped for the top." The trajectory is set.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2008</div>
+      <div class="timeline-title">Limbo, Panto</div>
+      <p class="timeline-text">Their debut album arrives — described as "shocking, funny, and above all irrevocable." It's art-rock with teeth: theatrical, literate, and completely unlike anything their peers are making. The album establishes their reputation as fearless outsiders.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2009</div>
+      <div class="timeline-title">Two Dancers — The Breakthrough</div>
+      <p class="timeline-text">Their masterpiece. Two Dancers lands on practically every "best of" list for 2009 and earns a nomination for the Mercury Prize — British music's most prestigious award. It's the sound of a band finding the perfect balance between beauty and danger, Hayden's voice at its most ravishing.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2011</div>
+      <div class="timeline-title">Smother — Going Deeper</div>
+      <p class="timeline-text">The third album reaches UK No. 17 — their first Top 20. They win the London Awards for Art and Performance. Touring member Katie Harkin (Sky Larkin) joins. The band is growing, but the sound is becoming more intimate, more electronic, more restless.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2014</div>
+      <div class="timeline-title">Present Tense</div>
+      <p class="timeline-text">UK No. 10 — their highest chart position ever. The album pushes further into synth-pop territory while Hayden's lyrics explore masculinity and desire with unprecedented directness. The critical acclaim continues, but commercial breakthrough remains elusive.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2016</div>
+      <div class="timeline-title">Boy King</div>
+      <p class="timeline-text">The final Wild Beasts album. UK No. 9. It's their most muscular, aggressive record — a deliberate reinvention that channels frustration into something primal. Behind the scenes, the tensions that will end the band are already building.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2017–18</div>
+      <div class="timeline-title">The Beautiful End</div>
+      <p class="timeline-text">On 25 September 2017, Wild Beasts announce their disbandment. They release the farewell EP "Punk Drunk & Trembling" and play their final shows — three sold-out nights in Dublin, Manchester, and London. Hayden calls them "a public funeral." The live album "Last Night All My Dreams Came True" captures the final gig at Rockaway Beach Festival. Sixteen years of music, five albums, one Mercury nomination — done.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2019</div>
+      <div class="timeline-title">Diviner — Rebirth</div>
+      <p class="timeline-text">Just one week after Wild Beasts' last show, during the "Beast from the East" snowstorm, Hayden enters the studio alone. London is covered in white — a blank slate. The result is Diviner, his solo debut: piano-led torch songs about intuition, belief, and mysticism. "I'm a keeper of secrets," he sings. "I'll be your disciple — show me where to go." Domino Records releases it in May to warm critical reception.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2020</div>
+      <div class="timeline-title">Aerial Songs</div>
+      <p class="timeline-text">An EP born from lockdown and solitude — songs written with the whole world grounded. The title speaks to Hayden's ability to find lift even when everything is pulled earthward.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2021</div>
+      <div class="timeline-title">Moondust for My Diamond</div>
+      <p class="timeline-text">His second solo album arrives with "The Universe Is Always Right" — a statement of cosmic surrender. The album deepens his solo voice, finding new textures and a confidence that comes from having already let everything go once.</p>
+    </div>
+    
+    <div class="timeline-item fade-in">
+      <div class="timeline-year">2024</div>
+      <div class="timeline-title">Ness — Into the Wild</div>
+      <p class="timeline-text">His most ambitious work: a musical interpretation of Robert Macfarlane's book about Orford Ness, a former military weapons testing site on the Suffolk coast now reclaimed by nature. Hayden incorporates the actual sounds of thistles, seeds, and grasses collected from the site. "If you had told me two years ago I would be making this record I would have laughed in your face," he says. It's an album about landscape, memory, and the strange beauty of places humans have abandoned.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOGRAPHY -->
+<section id="music">
+  <h2 class="section-title fade-in">Discography</h2>
+  <p class="section-subtitle fade-in">Eight albums across two eras — each one a step further into the unknown.</p>
+  
+  <div class="disco-grid">
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #2d1b3d, #1a1025);">
+        🎪
+        <span class="era-badge">Wild Beasts</span>
+      </div>
+      <div class="album-info">
+        <h3>Limbo, Panto</h3>
+        <div class="album-year">2008</div>
+        <p>"Shocking, funny, and above all irrevocable." The debut that announced Wild Beasts as fearless outsiders — theatrical, literary, and utterly unique. Singles: The Devil's Crayon, Brave Bulging Buoyant Clairvoyants.</p>
+        <div class="album-label">Domino Records</div>
+      </div>
+    </div>
+    
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #1b2d3d, #0a1520);">
+        💃
+        <span class="era-badge">Wild Beasts</span>
+      </div>
+      <div class="album-info">
+        <h3>Two Dancers</h3>
+        <div class="album-year">2009 · UK #68</div>
+        <p>The masterpiece. Mercury Prize nominated. Every end-of-year list. The perfect fusion of art-rock beauty and raw emotional power. "Hooting & Howling" and "All the King's Men" became indie anthems.</p>
+        <div class="album-label">Domino Records · Mercury Prize Nominee 2010</div>
+      </div>
+    </div>
+    
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #3d2d1b, #201510);">
+        🫧
+        <span class="era-badge">Wild Beasts</span>
+      </div>
+      <div class="album-info">
+        <h3>Smother</h3>
+        <div class="album-year">2011 · UK #17</div>
+        <p>First Top 20 album. Winner of the London Awards for Art and Performance. More intimate, more electronic — the sound of a band unafraid to slow down and let silence speak. Singles: Albatross, Bed of Nails.</p>
+        <div class="album-label">Domino Records</div>
+      </div>
+    </div>
+    
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #1b3d2d, #102015);">
+        ⏳
+        <span class="era-badge">Wild Beasts</span>
+      </div>
+      <div class="album-info">
+        <h3>Present Tense</h3>
+        <div class="album-year">2014 · UK #10</div>
+        <p>Their highest-charting album. Synthpop meets confessional poetry. "Wanderlust" and "Sweet Spot" push into new sonic territory while the lyrics wrestle with desire and modern masculinity with startling honesty.</p>
+        <div class="album-label">Domino Records</div>
+      </div>
+    </div>
+    
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #3d1b1b, #201010);">
+        👑
+        <span class="era-badge">Wild Beasts</span>
+      </div>
+      <div class="album-info">
+        <h3>Boy King</h3>
+        <div class="album-year">2016 · UK #9</div>
+        <p>The final studio album. The most physical, aggressive Wild Beasts record — channelling frustration into something primal and danceable. "Get My Bang" and "Big Cat" show a band going out swinging. Their chart peak and their swan song.</p>
+        <div class="album-label">Domino Records</div>
+      </div>
+    </div>
+    
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #2d2d3d, #151520);">
+        🔮
+        <span class="era-badge">Solo</span>
+      </div>
+      <div class="album-info">
+        <h3>Diviner</h3>
+        <div class="album-year">2019</div>
+        <p>The solo rebirth. Recorded in the week after Wild Beasts' final show, during a London snowstorm. Piano-led torch songs about intuition, belief, and starting over. "I'm a keeper of secrets. I'll be your disciple — show me where to go."</p>
+        <div class="album-label">Domino Records</div>
+      </div>
+    </div>
+    
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #1b1b3d, #0a0a20);">
+        🌙
+        <span class="era-badge">Solo</span>
+      </div>
+      <div class="album-info">
+        <h3>Moondust for My Diamond</h3>
+        <div class="album-year">2021</div>
+        <p>"The Universe Is Always Right" — a cosmic statement of surrender and confidence. The sophomore solo album deepens everything: richer textures, bolder arrangements, a voice more comfortable alone than ever before.</p>
+        <div class="album-label">Domino Records</div>
+      </div>
+    </div>
+    
+    <div class="album-card fade-in">
+      <div class="album-art" style="background: linear-gradient(135deg, #2d3d1b, #152010);">
+        🌾
+        <span class="era-badge">Solo</span>
+      </div>
+      <div class="album-info">
+        <h3>Ness</h3>
+        <div class="album-year">2024</div>
+        <p>A musical interpretation of Robert Macfarlane's book about Orford Ness — a former weapons site reclaimed by nature. Features actual field recordings of thistles, seeds, and grasses. "Something strange and beautiful about a non-human being."</p>
+        <div class="album-label">Domino Records</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section id="words">
+  <h2 class="section-title fade-in">In His Own Words</h2>
+  <p class="section-subtitle fade-in">Hayden Thorpe speaks like he sings — with precision, vulnerability, and an eye for beauty in unexpected places.</p>
+  
+  <div class="quotes-container">
+    <div class="quote-card fade-in">
+      <p class="quote-text">Music is a form of reincarnation. It doesn't degrade, it doesn't erode; music stays the same. The forces of time don't apply to music.</p>
+      <span class="quote-source">On the end of Wild Beasts — NME, 2019</span>
+    </div>
+    
+    <div class="quote-card fade-in">
+      <p class="quote-text">The band was my religion and the band was my belief system. Once that went, I had to build my own new belief system through scraps of whatever I could find lying around… mostly YouTube philosophers and Instagram.</p>
+      <span class="quote-source">On losing his identity — NME, 2019</span>
+    </div>
+    
+    <div class="quote-card fade-in">
+      <p class="quote-text">When you're bouncing ideas off yourself, it's kind of like playing chess against yourself. There can be days sat in your dressing gown thinking about the next move.</p>
+      <span class="quote-source">On making solo music — NME, 2019</span>
+    </div>
+    
+    <div class="quote-card fade-in">
+      <p class="quote-text">I broke up with myself — the idea of myself as the frontman, the idea of myself as the guy in the gang. Even the idea of me being the singer wasn't really definite. It can be beautiful, that process.</p>
+      <span class="quote-source">On identity after Wild Beasts — NME, 2019</span>
+    </div>
+    
+    <div class="quote-card fade-in">
+      <p class="quote-text">If you had told me two years ago I would be making this record I would have laughed in your face, but Orford Ness is a very human story. I became so compelled to make something strange and beautiful about a non-human being.</p>
+      <span class="quote-source">On making Ness — BBC, 2024</span>
+    </div>
+    
+    <div class="quote-card fade-in">
+      <p class="quote-text">There was, I'll put it mildly, a gargantuan abyss, that it was a joy to explore, in truth.</p>
+      <span class="quote-source">On the void after Wild Beasts — NME, 2019</span>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP CUTS / THINGS FANS MIGHT NOT KNOW -->
+<section id="secrets">
+  <h2 class="section-title fade-in">Things You Might Not Know</h2>
+  <p class="section-subtitle fade-in">Beyond the music — the stories, details, and surprises that make Hayden Thorpe one of the most fascinating people in modern British music.</p>
+  
+  <div class="deep-cuts">
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🏔️</div>
+      <h3>Kendal Mint Cake Country</h3>
+      <p>Hayden grew up in Kendal, Cumbria — a town of 30,000 in England's Lake District. The town is famous for Kendal Mint Cake, an energy bar used by Edmund Hillary's 1953 Everest expedition. It's about as far from the London music scene as you can get in England.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🦊</div>
+      <h3>The Name "Fauve"</h3>
+      <p>Before Wild Beasts, the band was called "Fauve" — the French word for "wild beast" and the root of "Fauvism," the art movement led by Matisse. The name change was practical (there were other Fauves) but the connection to radical art movements was deliberate.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🎵</div>
+      <h3>The Lady Gaga Connection</h3>
+      <p>Wild Beasts remixed Lady Gaga's "You and I" — yes, really. The collision of Hayden's ethereal countertenor with Gaga's pop maximalism is one of the most unexpected crossovers in indie history.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">❄️</div>
+      <h3>Beast from the East</h3>
+      <p>Hayden recorded the first Diviner sessions during the February 2018 "Beast from the East" snowstorm — just one week after Wild Beasts' final concert. London was buried in snow. He called it "literally a blank space" — a perfect metaphor for his fresh start.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🌿</div>
+      <h3>Recording with Nature</h3>
+      <p>For the Ness album, Hayden collected thistles, seeds, and grasses from Orford Ness in Suffolk — a former military weapons testing site, now a nature reserve — and incorporated their actual sounds into the record. The album is literally made from the landscape.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">📖</div>
+      <h3>The Rimbaud Influence</h3>
+      <p>Hayden cites 19th-century French poet Arthur Rimbaud as a major lyrical influence. Rimbaud wrote all his poetry before age 21, then abandoned literature entirely. The parallel with Hayden's own radical reinvention is hard to miss.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🎹</div>
+      <h3>Gary Barlow Was Right</h3>
+      <p>In an NME interview, Hayden admitted that he always mocked Gary Barlow for complaining about the silence after Take That ended. Then Wild Beasts broke up, and Hayden realized: "It turns out Gary Barlow was right. It does get quiet."</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🏫</div>
+      <h3>The Teacher's Son</h3>
+      <p>Wild Beasts drummer Chris Talbot was the son of Robert and Lesley Talbot — the music teachers at Queen Katherine School in Kendal, where the band formed. The school's music department literally created the conditions for the band to exist.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🎤</div>
+      <h3>The Jessie Ware & Elbow Sessions</h3>
+      <p>Beyond Lady Gaga, Wild Beasts also collaborated with Jessie Ware ("Night Light"), Elbow ("Gentle Storm"), and the cult band 2:54 ("You're Early"). They were the musicians' musicians — other artists sought their magic.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🪞</div>
+      <h3>"Marmite Voice"</h3>
+      <p>Hayden's soaring countertenor was famously called "like Marmite" by the press — you either love it or you don't. His response? A genuinely surprised: "I never realised my voice was like Marmite." That kind of unselfconscious singularity is exactly why fans love him.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🤝</div>
+      <h3>Tom Fleming's Parallel Path</h3>
+      <p>After Wild Beasts, bassist Tom Fleming became "One True Pairing" and released his own solo debut in September 2019 — the same year as Hayden's Diviner. Fleming later went folk-influenced with "Endless Rain" (2024). Both ex-frontmen found their separate voices.</p>
+    </div>
+    
+    <div class="deep-cut-card fade-in">
+      <div class="icon">🏆</div>
+      <h3>So Close to the Mercury</h3>
+      <p>Two Dancers was nominated for the 2010 Mercury Prize but lost to The xx's debut. It's one of indie music's great "what ifs" — had Wild Beasts won, their career trajectory might have been entirely different.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Made with <span class="heart">♥</span> by a devoted fan</p>
+  <p style="margin-top:8px;">This is an unofficial fan site. Hayden Thorpe's music is available on <a href="https://www.dominomusic.com/artists/wild-beasts" target="_blank">Domino Records</a>.</p>
+  <p style="margin-top:8px; opacity:0.5;">© 2026 — Not affiliated with Hayden Thorpe or Domino Records</p>
+</footer>
+
+<script>
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Smooth nav background
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 100 
+    ? 'rgba(10,10,15,0.95)' 
+    : 'rgba(10,10,15,0.85)';
+});
+</script>
+</body>
+</html>
