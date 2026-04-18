@@ -298,7 +298,11 @@ section {
   justify-content: center;
   font-size: 4rem;
   position: relative;
+  background-size: cover;
+  background-position: center;
 }
+
+.album-art.has-img { font-size: 0; }
 
 .album-art .era-badge {
   position: absolute;
@@ -437,13 +441,57 @@ footer a {
   text-decoration: none;
 }
 
+/* MOBILE MENU */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .bio-grid { grid-template-columns: 1fr; }
   .quotes-container { grid-template-columns: 1fr; }
-  nav .links { gap: 12px; }
-  nav .links a { font-size: 0.75rem; }
+  .disco-grid { grid-template-columns: 1fr; }
   section { padding: 60px 16px; }
+
+  .menu-toggle { display: block; }
+
+  nav { padding: 12px 16px; }
+
+  nav .links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10,10,15,0.97);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 16px;
+    border-bottom: 1px solid rgba(196,162,101,0.15);
+  }
+
+  nav .links.open { display: flex; }
+
+  nav .links a {
+    font-size: 0.9rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  nav .links a:last-child { border: none; }
+}
+
+@media (max-width: 480px) {
+  .deep-cuts { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero .subtitle { font-size: 1rem; letter-spacing: 2px; }
 }
 
 /* FADE IN ANIMATION */
@@ -462,12 +510,13 @@ footer a {
 
 <nav>
   <a href="#" class="logo">HT</a>
+  <button class="menu-toggle" onclick="document.querySelector('.links').classList.toggle('open')" aria-label="Menu">☰</button>
   <div class="links">
-    <a href="#biography">Biography</a>
-    <a href="#journey">Journey</a>
-    <a href="#music">Music</a>
-    <a href="#words">Words</a>
-    <a href="#secrets">Deep Cuts</a>
+    <a href="#biography" onclick="document.querySelector('.links').classList.remove('open')">Biography</a>
+    <a href="#journey" onclick="document.querySelector('.links').classList.remove('open')">Journey</a>
+    <a href="#music" onclick="document.querySelector('.links').classList.remove('open')">Music</a>
+    <a href="#words" onclick="document.querySelector('.links').classList.remove('open')">Words</a>
+    <a href="#secrets" onclick="document.querySelector('.links').classList.remove('open')">Deep Cuts</a>
   </div>
 </nav>
 
@@ -657,8 +706,7 @@ footer a {
   
   <div class="disco-grid">
     <div class="album-card fade-in">
-      <div class="album-art" style="background: linear-gradient(135deg, #2d1b3d, #1a1025);">
-        🎪
+      <div class="album-art has-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/0/02/WildBeasts-LimboPanto.jpg');">
         <span class="era-badge">Wild Beasts</span>
       </div>
       <div class="album-info">
@@ -670,8 +718,7 @@ footer a {
     </div>
     
     <div class="album-card fade-in">
-      <div class="album-art" style="background: linear-gradient(135deg, #1b2d3d, #0a1520);">
-        💃
+      <div class="album-art has-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/e/e1/WildBeasts-TwoDancers.jpg');">
         <span class="era-badge">Wild Beasts</span>
       </div>
       <div class="album-info">
@@ -683,8 +730,7 @@ footer a {
     </div>
     
     <div class="album-card fade-in">
-      <div class="album-art" style="background: linear-gradient(135deg, #3d2d1b, #201510);">
-        🫧
+      <div class="album-art has-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/d/d0/WildBeasts-Smother.jpg');">
         <span class="era-badge">Wild Beasts</span>
       </div>
       <div class="album-info">
@@ -696,8 +742,7 @@ footer a {
     </div>
     
     <div class="album-card fade-in">
-      <div class="album-art" style="background: linear-gradient(135deg, #1b3d2d, #102015);">
-        ⏳
+      <div class="album-art has-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/2/2b/WildBeasts-PresentTense.jpg');">
         <span class="era-badge">Wild Beasts</span>
       </div>
       <div class="album-info">
@@ -709,8 +754,7 @@ footer a {
     </div>
     
     <div class="album-card fade-in">
-      <div class="album-art" style="background: linear-gradient(135deg, #3d1b1b, #201010);">
-        👑
+      <div class="album-art has-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/a/a9/Wild_Beasts_-_Boy_King.png');">
         <span class="era-badge">Wild Beasts</span>
       </div>
       <div class="album-info">
@@ -722,8 +766,7 @@ footer a {
     </div>
     
     <div class="album-card fade-in">
-      <div class="album-art" style="background: linear-gradient(135deg, #2d2d3d, #151520);">
-        🔮
+      <div class="album-art has-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/5/5a/Hayden_Thorpe_-_Diviner.png');">
         <span class="era-badge">Solo</span>
       </div>
       <div class="album-info">
@@ -735,8 +778,7 @@ footer a {
     </div>
     
     <div class="album-card fade-in">
-      <div class="album-art" style="background: linear-gradient(135deg, #1b1b3d, #0a0a20);">
-        🌙
+      <div class="album-art has-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/6/67/Hayden_Thorpe_-_Moondust_for_My_Diamond.png');">
         <span class="era-badge">Solo</span>
       </div>
       <div class="album-info">
@@ -754,6 +796,7 @@ footer a {
       </div>
       <div class="album-info">
         <h3>Ness</h3>
+        <!-- No Wikipedia cover available for Ness yet -->
         <div class="album-year">2024</div>
         <p>A musical interpretation of Robert Macfarlane's book about Orford Ness — a former weapons site reclaimed by nature. Features actual field recordings of thistles, seeds, and grasses. "Something strange and beautiful about a non-human being."</p>
         <div class="album-label">Domino Records</div>
